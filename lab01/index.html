@@ -1,0 +1,66 @@
+<HTML>
+<BODY> 
+
+<canvas id='lab01' height='600' width='1000' style='border-width: 3px'> </canvas> 
+
+<script> 
+	var canvas = document.getElementById('lab01'); 
+	var ctx = canvas.getContext('2d'); 
+	var xvarSky = 0;
+	setInterval(function () { 
+		//sky
+		ctx.fillStyle = '#b0e0e6'; 
+		ctx.fillRect(0, 0, 1000, 600);
+		
+		//earth
+		ctx.fillStyle = '#228B22'; 
+		ctx.fillRect(0, 500, 1000, 400);
+		//trees
+		for(let i = 100; i < 1000; )
+		{
+			ctx.fillStyle = '#A0522D';
+			ctx.fillRect(i-2, 425, 10, 100); 
+			ctx.fillStyle = '#336600';
+			ctx.beginPath();
+			ctx.moveTo(i, 325);
+			ctx.lineTo(i-50, 425);
+			ctx.lineTo(i+50, 425);
+			ctx.fill();
+			i = i + 100; 
+		}
+		
+		//sun and clouds
+		ctx.fillStyle = '#FFD700';
+		ctx.beginPath();
+		ctx.arc(500, 150, 70, 0, Math.PI*2, true);
+		ctx.fill();
+		xvarSky += 5; 
+		ctx.fillStyle = '#F0F8FF';
+		ctx.beginPath();
+		ctx.arc(300 + xvarSky, 200, 60, 0, Math.PI*2, true);
+		ctx.arc(250 + xvarSky, 200, 45, 0, Math.PI*2, true);
+		ctx.arc(350 + xvarSky, 200, 45, 0, Math.PI*2, true);
+		ctx.arc(220 + xvarSky, 200, 30, 0, Math.PI*2, true);
+		ctx.arc(380 + xvarSky, 200, 30, 0, Math.PI*2, true);
+		ctx.fill();
+		ctx.fillStyle = '#F0F8FF';
+		ctx.beginPath();
+		ctx.arc(550 + xvarSky, 150, 20, 0, Math.PI*2, true);
+		ctx.arc(570 + xvarSky, 150, 30, 0, Math.PI*2, true);
+		ctx.arc(600 + xvarSky, 150, 40, 0, Math.PI*2, true);
+		ctx.arc(630 + xvarSky, 150, 30, 0, Math.PI*2, true);
+		ctx.arc(650 + xvarSky, 150, 20, 0, Math.PI*2, true);
+		ctx.fill();
+		ctx.fillStyle = '#F0F8FF';
+		ctx.beginPath();
+		ctx.arc(740 + xvarSky, 250, 30, 0, Math.PI*2, true);
+		ctx.arc(760 + xvarSky, 250, 40, 0, Math.PI*2, true);
+		ctx.arc(800 + xvarSky, 250, 50, 0, Math.PI*2, true);
+		ctx.arc(840 + xvarSky, 250, 40, 0, Math.PI*2, true);
+		ctx.arc(860 + xvarSky, 250, 30, 0, Math.PI*2, true);
+		ctx.fill();
+		
+	}, 20)
+</script> 
+</BODY> 
+</HTML>
