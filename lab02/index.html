@@ -1,8 +1,9 @@
 <HTML>
 <BODY>
 
-<canvas id='lab02' height='500' width='500' style='border-width: 3px'> </canvas>
-<canvas id='lab02Blur' height='500' width='500' style='border-width: 3px'> </canvas>
+<canvas id='lab02' height='500' width='1000' style='border-width: 3px'> </canvas>
+<canvas id='lab02Blur' height='500' width='1000' style='border-width: 3px'> </canvas>
+
 <script>
 var buffer =[];
 var img = new Image();
@@ -10,17 +11,18 @@ img.src = 'img.jpg';
 img.onload = function() {
   draw(this);
 };
+	
 function draw(img) {
 	var canvas = document.getElementById('lab02');
-    var ctx = canvas.getContext('2d');
-    ctx.drawImage(img, 0, 0);
-    img.style.display = 'none';
+	var ctx = canvas.getContext('2d');
+	ctx.drawImage(img, 0, 0);
+	img.style.display = 'none';
 	
-    var imageData, imageDataBlur;
-    var data, dataBlur; 
+	var imageData, imageDataBlur;
+	var data, dataBlur; 
 	var tmpRed, tmpGreen, tmpBlue;
 	
-    var blur = function() {
+    	var blur = function() {
 		for(var j = 0; j < img.height;) {
 			for(var i = 0; i < img.width;) {
 				if((j == 0) || (i == 0) || (j == img.height) || (i == img.width)){
@@ -58,7 +60,8 @@ function draw(img) {
 	imageDataBlur = ctxs.getImageData(500, 0, img.width, img.height);
 	dataBlur = imageDataBlur.data;
 	
-	for(k = 0; k < dataBlur.length; k++) {
+	for(k = 0; k < dataBlur.length; k++) 
+	{
 		dataBlur[k] = buffer[k];
 	}
 	ctx.putImageData(imageDataBlur, 600, 0);
