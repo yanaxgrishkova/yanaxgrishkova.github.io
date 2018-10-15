@@ -3,11 +3,13 @@
 <canvas id='lab04' height='500' width='1000' style='border-width: 3px'> </canvas>
 
 <script>
+	
 var buffer =[];
 var img = new Image();
 img.src = 'img.jpg';
-img.onload = function() {
-  draw(this);
+img.onload = function() 
+{	
+	draw(this);
 };
 
 function draw(img) 
@@ -44,19 +46,6 @@ function draw(img)
 			j += 1;
 		}
 	};
-	
-  function grayscale(grayData)
-		{
-			for(var i = 0; i < grayData.data.length; i+=4)
-			{
-				var grayscale = Math.floor((grayData.data[i] + grayData.data[i+1] + grayData.data[i+2])/3);
-				grayData.data[i] = grayscale;
-				grayData.data[i+1] = grayscale;
-				grayData.data[i+2] = grayscale;
-	    	}
-        
-	    	return grayData;
-		}
     
 	Sobel();
   
@@ -68,6 +57,18 @@ function draw(img)
 	}
 	ctx.putImageData(imageSobelData, 600, 0);
 	ctx.drawImage(img, 0, 0);
+}
+	
+function grayscale(grayData)
+{
+	for(var i = 0; i < grayData.data.length; i+=4)
+	{
+		var grayscale = Math.floor((grayData.data[i] + grayData.data[i+1] + grayData.data[i+2])/3);
+		grayData.data[i] = grayscale;
+		grayData.data[i+1] = grayscale;
+		grayData.data[i+2] = grayscale;
+}
+	return grayData;
 }
 	
 </script> 
